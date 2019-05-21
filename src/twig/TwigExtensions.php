@@ -79,6 +79,7 @@ class TwigExtensions extends \Twig_Extension
 
         $match = $matches[1];
 
+
         if (preg_match('/src=[\'|"]([^\"]*)[\'|"]/i', $match, $source)) {
             $tmpSrc = $src = $source[1];
 
@@ -86,7 +87,8 @@ class TwigExtensions extends \Twig_Extension
                 if (array_key_exists('scheme', $parsed) && 'https' !== $parsed['scheme']) {
                     $tmpSrc = str_replace($parsed['scheme'], 'https://', $tmpSrc);
                 } else {
-                    $tmpSrc = sprintf('https://%s', implode('', $parsed));
+                    // $tmpSrc = sprintf('https://%s', implode('', $parsed));
+                    $tempSrc = $src;
                 }
                 $html = str_replace($src, $tmpSrc, $html);
             }
